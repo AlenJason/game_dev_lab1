@@ -1,6 +1,6 @@
 # Giải thích chi tiết các script – Lab 1 Space Shooter
 
-Tài liệu này giải thích từng script trong `Assets/Scripts`: script đó gắn vào GameObject nào, có những biến gì, từng hàm làm gì và nó nói chuyện với script nào khác.
+Tài liệu này giải thích từng script trong `Assets/Scripts` (19 script): script đó gắn vào GameObject nào, có những biến gì, từng hàm làm gì và nó nói chuyện với script nào khác.
 
 ---
 
@@ -22,10 +22,10 @@ Tài liệu này giải thích từng script trong `Assets/Scripts`: script đó
 | `Map/Walls/Top, Bottom, Left, Right` | BoxCollider2D (tag `Wall`, Physics Material `Bouncy`) |
 | `Spaceship` (tag `Player`) | SpriteRenderer, Rigidbody2D, PolygonCollider2D, **PlayerHealth**, **PlayerController** |
 | `Spaceship/Gun` | **Gun** |
-| `GameManager` | **GameManager**, **UpgradeManager** |
+| `GameManager` | **GameManager**, **UpgradeManager**, **PauseMenu** |
 | `Spawner` | **Spawner** |
 | `WaveManager` | **WaveManager** |
-| `Canvas` | Canvas + **HUD** (điểm, level, wave, 3 tim, thanh máu boss, banner, bảng chọn kỹ năng, bảng Game Over) |
+| `Canvas` | Canvas + **HUD** (điểm, level, wave, 3 tim, thanh máu boss, banner, bảng chọn kỹ năng, bảng PAUSED, bảng Game Over) |
 | `EventSystem` | Để bấm được các nút UI |
 
 ### Các prefab (`Assets/Prefabs`)
@@ -369,6 +369,23 @@ static int ScoreForLevel(int level) => 40 * level * (level - 1);
 
 ---
 
+### 2.17 `PauseMenu.cs` – Tạm dừng game
+
+**Gắn vào:** `GameManager`. Điều khiển bảng `Canvas/PausePanel` (chữ **PAUSED** và 3 nút).
+
+| Biến / Property | Ý nghĩa |
+|---|---|
+| `pausePanel` | Bảng PAUSED |
+| `upgradeManager` | Để biết bảng chọn kỹ năng có đang mở không |
+| `IsPaused` | Game có đang tạm dừng không |
+
+**Các hàm:**
+- `Start()`: ẩn bảng PAUSED.
+- `Update()`: bấm **Esc** hoặc **P** (`Input.GetKeyDown`): đang dừng thì `Resume()`, đang chơi thì `Pause()`.
+- `Pause()`: **không cho pause** khi đã Game Over hoặc đang mở bảng chọn kỹ năng (để 2 bảng không chồng lên nhau). Ngược lại thì hiện bảng và `Time.timeScale = 0`. Mọi thứ phụ thuộc thời gian đều đứng yên: vật lý, `Time.deltaTime`, `WaitForSeconds` của wave. `Gun` và `PlayerController` cũng tự bỏ qua `Update()` khi `timeScale == 0` nên không bắn, không xoay được.
+- `Resume()` (nút **RESUME**): ẩn bảng, `Time.timeScale = 1`.
+- `Restart()` (nút **RESTART**) và `BackToLobby()` (nút **LOBBY**): đặt lại `Time.timeScale = 1` **trước khi** đổi scene. Nếu quên bước này thì scene mới sẽ bị đứng hình, vì `timeScale` là giá trị chung của cả game chứ không thuộc riêng scene nào.
+
 ## 3. Script của Lobby và lưu dữ liệu
 
 ### 3.1 `LobbyMenu.cs` – Màn hình chờ
@@ -413,3 +430,4 @@ static int ScoreForLevel(int level) => 40 * level * (level - 1);
 | Wave và boss? | Wave n có `3 + 2(n−1)` địch; wave chia hết cho 5 chỉ có boss, boss mạnh dần | `WaveManager`, `Boss.Setup` |
 | Best score lưu ở đâu? | `PlayerPrefs` dạng JSON | `RunHistory` |
 | Tạm dừng game khi chọn kỹ năng? | `Time.timeScale = 0` | `UpgradeManager.Show` |
+| Pause game thế nào? | Esc / P → `Time.timeScale = 0` và hiện bảng PAUSED; Resume đặt lại `= 1` | `PauseMenu` |

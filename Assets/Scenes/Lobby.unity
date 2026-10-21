@@ -469,7 +469,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 48
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -777,7 +777,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1224,7 +1224,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 110
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1518,7 +1518,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "DI CHUY\u1EC2N:  W A S D  ho\u1EB7c ph\xEDm m\u0169i t\xEAn\nNG\u1EAEM:  di chu\u1ED9t, m\u0169i t\xE0u lu\xF4n h\u01B0\u1EDBng theo con tr\u1ECF\nB\u1EAEN:  gi\u1EEF chu\u1ED9t tr\xE1i ho\u1EB7c ph\xEDm Space\n\n\u2022 B\u1EAFn v\u1EE1 thi\xEAn th\u1EA1ch: +10 \u0111i\u1EC3m     \u2022 H\u1EA1 t\xE0u \u0111\u1ECBch: +20 \u0111i\u1EC3m\n\u2022 Nh\u1EB7t ng\xF4i sao: +5 \u0111i\u1EC3m           \u2022 H\u1EA1 boss: +200 \u0111i\u1EC3m v\xE0 h\u1ED3i 1 tim\n\n\u2022 T\xE0u c\xF3 3 tr\xE1i tim. Tr\xFAng \u0111\u1EA1n ho\u1EB7c va ch\u1EA1m s\u1EBD m\u1EA5t 1 tim v\xE0 b\u1EA5t t\u1EED 2 gi\xE2y.\n\u2022 T\xE0u \u0111\u1ECBch xu\u1EA5t hi\u1EC7n theo WAVE, h\u1EA1 h\u1EBFt th\xEC sang wave m\u1EDBi (\u0111\xF4ng v\xE0 m\u1EA1nh h\u01A1n).\n\u2022 C\u1EE9 m\u1ED7i 5 wave l\xE0 BOSS WAVE: ch\u1EC9 c\xF3 boss, boss sau m\u1EA1nh h\u01A1n boss tr\u01B0\u1EDBc.\n\u2022 \u0110\u1EE7 \u0111i\u1EC3m s\u1EBD l\xEAn level v\xE0 \u0111\u01B0\u1EE3c ch\u1ECDn 1 k\u1EF9 n\u0103ng n\xE2ng c\u1EA5p.\n\u2022 H\u1EBFt tim l\xE0 Game Over, \u0111i\u1EC3m \u0111\u01B0\u1EE3c l\u01B0u v\xE0o History."
+  m_Text: "DI CHUY\u1EC2N:  W A S D  ho\u1EB7c ph\xEDm m\u0169i t\xEAn\nNG\u1EAEM:  di chu\u1ED9t, m\u0169i t\xE0u lu\xF4n h\u01B0\u1EDBng theo con tr\u1ECF\nB\u1EAEN:  gi\u1EEF chu\u1ED9t tr\xE1i ho\u1EB7c ph\xEDm Space\nT\u1EA0M D\u1EEANG:  ph\xEDm Esc ho\u1EB7c P\n\n\u2022 B\u1EAFn v\u1EE1 thi\xEAn th\u1EA1ch: +10 \u0111i\u1EC3m     \u2022 H\u1EA1 t\xE0u \u0111\u1ECBch: +20 \u0111i\u1EC3m\n\u2022 Nh\u1EB7t ng\xF4i sao: +5 \u0111i\u1EC3m           \u2022 H\u1EA1 boss: +200 \u0111i\u1EC3m v\xE0 h\u1ED3i 1 tim\n\n\u2022 T\xE0u c\xF3 3 tr\xE1i tim. Tr\xFAng \u0111\u1EA1n ho\u1EB7c va ch\u1EA1m s\u1EBD m\u1EA5t 1 tim v\xE0 b\u1EA5t t\u1EED 2 gi\xE2y.\n\u2022 T\xE0u \u0111\u1ECBch xu\u1EA5t hi\u1EC7n theo WAVE, h\u1EA1 h\u1EBFt th\xEC sang wave m\u1EDBi (\u0111\xF4ng v\xE0 m\u1EA1nh h\u01A1n).\n\u2022 C\u1EE9 m\u1ED7i 5 wave l\xE0 BOSS WAVE: ch\u1EC9 c\xF3 boss, boss sau m\u1EA1nh h\u01A1n boss tr\u01B0\u1EDBc.\n\u2022 \u0110\u1EE7 \u0111i\u1EC3m s\u1EBD l\xEAn level v\xE0 \u0111\u01B0\u1EE3c ch\u1ECDn 1 k\u1EF9 n\u0103ng n\xE2ng c\u1EA5p.\n\u2022 H\u1EBFt tim l\xE0 Game Over, \u0111i\u1EC3m \u0111\u01B0\u1EE3c l\u01B0u v\xE0o History."
 --- !u!222 &1182300014
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1723,7 +1723,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 80
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2211,7 +2211,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
