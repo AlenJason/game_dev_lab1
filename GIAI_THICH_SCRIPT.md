@@ -1,6 +1,6 @@
 # Giải thích chi tiết các script – Lab 1 Space Shooter
 
-Tài liệu này giải thích từng script trong `Assets/Scripts` (và công cụ `Assets/Editor/BuildLab1.cs`): script đó gắn vào GameObject nào, có những biến gì, từng hàm làm gì và nó nói chuyện với script nào khác.
+Tài liệu này giải thích từng script trong `Assets/Scripts`: script đó gắn vào GameObject nào, có những biến gì, từng hàm làm gì và nó nói chuyện với script nào khác.
 
 ---
 
@@ -399,21 +399,7 @@ static int ScoreForLevel(int level) => 40 * level * (level - 1);
 
 ---
 
-## 4. Công cụ Editor: `Assets/Editor/BuildLab1.cs`
-
-Đây **không phải script trong game**. Nó là công cụ chạy trong Unity Editor, đã được dùng để tự động dựng 2 scene và 6 prefab:
-- import sprite;
-- tạo tag;
-- tạo các GameObject, gắn component, gán tham chiếu giữa các script;
-- dựng UI.
-
-Vì nằm trong thư mục `Editor`, nó **không được đưa vào bản build game**.
-
-> Lưu ý: chạy lại `BuildLab1.Run` sẽ **dựng lại scene từ đầu**, ghi đè mọi chỉnh sửa tay trong 2 scene. Nếu bạn muốn chỉnh scene bằng tay trong Editor thì không chạy lại công cụ này.
-
----
-
-## 5. Câu hỏi giáo viên có thể hỏi
+## 4. Câu hỏi giáo viên có thể hỏi
 
 | Câu hỏi | Trả lời ngắn | Xem ở |
 |---|---|---|
