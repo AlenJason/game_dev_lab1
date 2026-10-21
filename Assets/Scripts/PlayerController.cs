@@ -1,22 +1,26 @@
 using UnityEngine;
 
 // Điều khiển tàu vũ trụ: WASD / phím mũi tên để di chuyển, mũi tàu luôn hướng theo chuột
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PlayerHealth))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 6f;
 
+    public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+
     Rigidbody2D rb;
+    PlayerHealth health;
     Vector2 moveInput;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
-        if (GameManager.Instance.IsGameOver) { return; }
+        if (GameManager.Instance.IsGameOver || Time.timeScale == 0f) { return; }
 
         moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
@@ -34,11 +38,16 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Va vào thiên thạch thì thua
-        if (collision.gameObject.CompareTag("Asteroid"))
+        GameObject other = collision.gameObject;
+
+        // Đâm vào thiên thạch hoặc tàu địch: mất 1 mạng, vật đó bị phá huỷ
+        if (other.CompareTag("Asteroid") || other.CompareTag("Enemy"))
         {
-            GameManager.Instance.GameOver();
-            gameObject.SetActive(false);
+            if (health.TakeHit()) { Destroy(other); }
+        }
+        else if (other.CompareTag("Boss"))
+        {
+            health.TakeHit();
         }
     }
 

@@ -1,15 +1,16 @@
 using UnityEngine;
 
-// Sinh thiên thạch và sao tại vị trí ngẫu nhiên trong map, không sinh quá gần tàu
+// Sinh thiên thạch và sao tại vị trí ngẫu nhiên trong map (không quá gần tàu người chơi).
+// Tàu địch và boss do WaveManager quyết định, Spawner chỉ lo chọn vị trí sinh.
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject asteroidPrefab;
     [SerializeField] GameObject starPrefab;
     [SerializeField] Transform player;
-    [SerializeField] int maxAsteroids = 12;
+    [SerializeField] int maxAsteroids = 18;
     [SerializeField] int maxStars = 6;
-    [SerializeField] float spawnInterval = 1.5f;
-    [SerializeField] float safeDistance = 4f;
+    [SerializeField] float spawnInterval = 1f;
+    [SerializeField] float safeDistance = 5f;
 
     float timer;
 
@@ -28,19 +29,24 @@ public class Spawner : MonoBehaviour
         if (timer > 0f) { return; }
         timer = spawnInterval;
 
-        if (GameObject.FindGameObjectsWithTag("Asteroid").Length < maxAsteroids) { Spawn(asteroidPrefab); }
-        if (GameObject.FindGameObjectsWithTag("Star").Length < maxStars) { Spawn(starPrefab); }
+        if (Count("Asteroid") < maxAsteroids) { Spawn(asteroidPrefab); }
+        if (Count("Star") < maxStars) { Spawn(starPrefab); }
     }
 
-    void Spawn(GameObject prefab)
+    static int Count(string tag) => GameObject.FindGameObjectsWithTag(tag).Length;
+
+    // Sinh prefab ở vị trí ngẫu nhiên, cách tàu người chơi ít nhất minDistance
+    public GameObject Spawn(GameObject prefab, float minDistance = -1f)
     {
+        if (minDistance < 0f) { minDistance = safeDistance; }
         Rect bounds = GameManager.Instance.MapBounds;
         Vector2 position;
+        int tries = 0;
         do
         {
             position = new Vector2(Random.Range(bounds.xMin, bounds.xMax), Random.Range(bounds.yMin, bounds.yMax));
-        } while (Vector2.Distance(position, player.position) < safeDistance);
+        } while (Vector2.Distance(position, player.position) < minDistance && ++tries < 50);
 
-        Instantiate(prefab, position, Quaternion.identity);
+        return Instantiate(prefab, position, Quaternion.identity);
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - Asteroid
   - Star
   - Wall
+  - Enemy
+  - Boss
   layers:
   - Default
   - TransparentFX

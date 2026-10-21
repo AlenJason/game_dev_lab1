@@ -1,11 +1,13 @@
 using UnityEngine;
 
-// Viên đạn: bay thẳng theo hướng bắn, phá thiên thạch khi trúng, tự huỷ sau một thời gian
+// Đạn của tàu: bay thẳng theo hướng bắn, gây sát thương cho thiên thạch / tàu địch / boss
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float speed = 14f;
     [SerializeField] float lifeTime = 2f;
+
+    public int Damage { get; set; } = 1;
 
     void Start()
     {
@@ -15,13 +17,16 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Asteroid"))
+        if (other.CompareTag("Wall"))
         {
-            other.GetComponent<Asteroid>().Hit();
             Destroy(gameObject);
+            return;
         }
-        else if (other.CompareTag("Wall"))
+
+        var target = other.GetComponent<IDamageable>();
+        if (target != null)
         {
+            target.TakeDamage(Damage);
             Destroy(gameObject);
         }
     }
