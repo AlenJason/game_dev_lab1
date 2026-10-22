@@ -6,6 +6,8 @@ Tài liệu này giải thích từng script trong `Assets/Scripts` (19 script):
 
 ## 1. Tổng quan
 
+Project dùng **Universal Render Pipeline (URP) 2D** (`Assets/Settings/UniversalRP.asset` + `Renderer2D.asset`), Unity 6000.6.2f1.
+
 ### Hai scene
 
 | Scene | Vai trò |
@@ -18,6 +20,7 @@ Tài liệu này giải thích từng script trong `Assets/Scripts` (19 script):
 | GameObject | Script / Component |
 |---|---|
 | `Main Camera` | Camera (orthographic size 5) + **CameraFollow** |
+| `Global Light 2D` | Light2D (URP) – đèn chung cường độ 1 để sprite (material `Sprite-Lit-Default`) hiển thị đủ sáng |
 | `Map/Background` | SpriteRenderer (chế độ Tiled, 40×24) |
 | `Map/Walls/Top, Bottom, Left, Right` | BoxCollider2D (tag `Wall`, Physics Material `Bouncy`) |
 | `Spaceship` (tag `Player`) | SpriteRenderer, Rigidbody2D, PolygonCollider2D, **PlayerHealth**, **PlayerController** |
